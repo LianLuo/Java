@@ -1,0 +1,12 @@
+E:\WinformCode\IM\server\server\bin\Debug\server.exe.config
+E:\WinformCode\IM\server\server\obj\Debug\server.exe
+E:\WinformCode\IM\server\server\obj\Debug\server.pdb
+E:\WinformCode\IM\server\server\bin\Debug\Database.mdb
+E:\WinformCode\IM\server\server\bin\Debug\server.exe
+E:\WinformCode\IM\server\server\bin\Debug\server.pdb
+E:\WinformCode\IM\server\server\obj\Debug\ResolveAssemblyReference.cache
+E:\WinformCode\IM\server\server\obj\Debug\server.chooseface.resources
+E:\WinformCode\IM\server\server\obj\Debug\server.serverfrm.resources
+E:\WinformCode\IM\server\server\obj\Debug\server.Properties.Resources.resources
+E:\WinformCode\IM\server\server\obj\Debug\server.users.resources
+E:\WinformCode\IM\server\server\obj\Debug\server.csproj.GenerateResource.Cache

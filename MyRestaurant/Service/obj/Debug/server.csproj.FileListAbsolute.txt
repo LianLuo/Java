@@ -1,0 +1,13 @@
+C:\Users\Multi\Desktop\MyRestaurant\Service\bin\Debug\server.exe.config
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.pdb
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.chooseface.resources
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.serverfrm.resources
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.Properties.Resources.resources
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.users.resources
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.csproj.GenerateResource.Cache
+C:\Users\Multi\Desktop\MyRestaurant\Service\bin\Debug\Database.mdb
+C:\Users\Multi\Desktop\MyRestaurant\Service\bin\Debug\server.exe
+C:\Users\Multi\Desktop\MyRestaurant\Service\bin\Debug\server.pdb
+C:\Users\Multi\Desktop\MyRestaurant\Service\bin\Debug\agsXMPP.dll
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.csprojResolveAssemblyReference.cache
+C:\Users\Multi\Desktop\MyRestaurant\Service\obj\Debug\server.exe
