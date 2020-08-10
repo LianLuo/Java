@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-lazy-init="true">
+    <bean id="userDao4MySql" class="com.example.spring.dao.UserMySqlDao"/>
+    <bean id="userDao4Oracle" class="com.example.spring.dao.UserOracleDao"/>
+    <bean id="userManagerImp" class="com.example.spring.manager.UserManagerImp">
+<!--        <constructor-arg name="userDao" ref="userDao4Oracle"/>-->
+        <property name="userDao" ref="userDao4MySql"/>
+    </bean>
+
+    <bean id="datePropertyEditor" class="com.example.spring.beans.UtilDatePropertyEditor" scope="singleton">
+        <property name="format" value="yyyy-mm-dd"/>
+    </bean>
+    <bean id="id1" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date" value="com.example.spring.beans.UtilDatePropertyEditor">
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>

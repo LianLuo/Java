@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="userDao4MySql" class="com.example.spring.dao.UserMySqlDao"/>
+    <bean id="userDao4Oracle" class="com.example.spring.dao.UserOracleDao"/>
+    <bean id="userManagerImp" class="com.example.spring.manager.UserManagerImp">
+<!--        <constructor-arg name="userDao" ref="userDao4Oracle"/>-->
+        <property name="userDao" ref="userDao4MySql"/>
+    </bean>
+
+    <bean id="bean1" class="com.example.spring.beans.Bean1">
+        <property name="strVal" value="litian" />
+        <property name="intVal" value="21"/>
+        <property name="arrayVal">
+            <array>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </array>
+        </property>
+        <property name="listVal">
+            <list>
+                <value>5</value>
+                <value>6</value>
+                <value>7</value>
+            </list>
+        </property>
+        <property name="mapVal">
+            <map>
+                <entry key="1" value="123"/>
+                <entry key="2" value="345"/>
+                <entry key="3" value="456"/>
+            </map>
+        </property>
+        <property name="setVal">
+            <set>
+                <value>11</value>
+                <value>12</value>
+                <value>13</value>
+            </set>
+        </property>
+        <property name="dateVal" value="2019-11-12" />
+    </bean>
+</beans>

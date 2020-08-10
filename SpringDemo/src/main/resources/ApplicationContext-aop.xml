@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 如果不启用这个 会出现xxx.xxx.ooo are in unnamed module of loader 'app'-->
+    <aop:config proxy-target-class="true"/>
+    <!-- 启用AspectJ对Annotation的支持 -->
+    <aop:aspectj-autoproxy/>
+    <bean id="userManager" class="com.example.spring.manager.UserManagerImp">
+        <property name="userDao" ref="userDao4MySql"/>
+    </bean>
+    <bean id="userDao4MySql" class="com.example.spring.dao.UserMySqlDao"/>
+    <bean id="userDao4Oracle" class="com.example.spring.dao.UserOracleDao"/>
+    <bean id="securityAOPHandler" class="com.example.spring.manager.SecurityAOPHandler"/>
+</beans>
