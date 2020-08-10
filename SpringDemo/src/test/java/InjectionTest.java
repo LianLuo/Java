@@ -8,13 +8,13 @@ public class InjectionTest extends TestCase {
     private BeanFactory factory;
     @Override
     protected void setUp() throws Exception {
-//        String[] resources = new String[]{
-//                "ApplicationContext-base.xml",
-//                "ApplicationContext-editor.xml",
-//                "ApplicationContext-common.xml"
-//        };
-        String filePattern = "ApplicationContext-*.xml";
-        factory = new ClassPathXmlApplicationContext(filePattern);
+        String[] resources = new String[]{
+                "ApplicationContext-base.xml",
+                "ApplicationContext-editor.xml",
+                "ApplicationContext-common.xml",
+                "ApplicationContext-beans.xml"
+        };
+        factory = new ClassPathXmlApplicationContext(resources);
     }
 
     public void testInjection(){

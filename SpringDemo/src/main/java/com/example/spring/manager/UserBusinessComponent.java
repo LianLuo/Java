@@ -2,7 +2,7 @@ package com.example.spring.manager;
 
 import com.example.spring.entities.LogEntity;
 import com.example.spring.entities.UserEntity;
-import com.example.spring.util.HibernateUtil;
+import com.example.spring.utils.HibernateUtils;
 import org.hibernate.Session;
 
 public class UserBusinessComponent implements IUserBusinessComponent{
@@ -11,7 +11,7 @@ public class UserBusinessComponent implements IUserBusinessComponent{
         Session session = null;
         try{
             //session = HibernateUtil.getSession();
-            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session = HibernateUtils.getSessionFactory().getCurrentSession();
             session.beginTransaction();
 
             session.save(userEntity);
