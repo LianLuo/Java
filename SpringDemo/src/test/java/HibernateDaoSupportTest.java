@@ -20,6 +20,7 @@ public class HibernateDaoSupportTest extends TestCase {
         userEntity.setTime(new Date());
         userEntity.setDetail("add some information");
         userEntity.setName("Lucy");
+        // 这里必须用接口，不能用实体类，因为这里采用的代理，转换不到实体类上。
         IUserBusinessComponent daoSupport = (IUserBusinessComponent)this.factory.getBean("userManager");
         daoSupport.addUser(userEntity);
     }
