@@ -12,13 +12,13 @@ public class UserBusinessComponentHibernateDaoSupport extends HibernateDaoSuppor
 
     private ILogBusinessComponent logBusinessComponent;
     @Override
-    public void addUser(UserEntity userEntity) {
+    public void addUser(UserEntity userEntity) throws RuntimeException{
         //this.getSessionFactory().getCurrentSession().save(userEntity);
         this.getHibernateTemplate().save(userEntity);
 
         LogEntity logEntity = new LogEntity();
         logEntity.setType("Record");
-
+        new RuntimeException("ABC");
         this.logBusinessComponent.addLog(logEntity);
     }
 }
