@@ -6,7 +6,6 @@ import com.example.spring.utils.HibernateUtils;
 public class LogBusinessComponent implements ILogBusinessComponent{
     @Override
     public void addLog(LogEntity logEntity) {
-
         HibernateUtils.getSessionFactory().getCurrentSession().save(logEntity);
     }
 }

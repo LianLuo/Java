@@ -58,6 +58,18 @@
             <artifactId>spring-orm</artifactId>
             <version>5.2.7.RELEASE</version>
         </dependency>
+        <!-- 下面两个如果不添加到依赖中，会出现 Cannot unwrap to requested type [javax.sql.DataSource]异常-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.4.17.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>5.4.17.Final</version>
+        </dependency>
     </dependencies>
     <build>
 
