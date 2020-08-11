@@ -6,34 +6,39 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-
-    <!-- spring-tx-4.0.xsd -->
-    <!-- 配置SessionFactory -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-
         <property name="configLocation">
             <value>classpath:hibernate.cfg.xml</value>
         </property>
     </bean>
-    <!-- 配置事务管理器 -->
+
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory"/>
-        </property>
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-    <!-- 那些类哪些方法使用事务 -->
+
+    <!-- 事务配置 -->
     <aop:config>
         <aop:pointcut id="allManagerMethod" expression="execution(* com.example.spring.manager.*.*(..))"/>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod"/>
+        <aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice"/>
     </aop:config>
-
-    <!-- 事务的传播性 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="add" propagation="REQUIRED" />
-            <tx:method name="del" propagation="REQUIRED" />
-            <tx:method name="modify" propagation="REQUIRED" />
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="del*" propagation="REQUIRED" />
+            <tx:method name="modify*" propagation="REQUIRED" />
             <tx:method name="*" read-only="true" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
+
+
+
+
+    <bean id="userManager" class="com.example.spring.manager.UserBusinessComponentHibernateDaoSupport">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="logBusinessComponent" ref="logManager"/>
+    </bean>
+
+    <bean id="logManager" class="com.example.spring.manager.LogBusinessComponentHibernateDaoSupport">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 </beans>
