@@ -59,3 +59,73 @@ e.g default-lazy-init="true"
 * Scope取值
     1. singleton:默认值，每次调用getBean都是返回相同对象。
     2. prototype:每次调用getBean()返回都是全新对象。
+    
+    
+- ----------------
+### Spring和Struts的依赖包配置（第一种）
+* Struts
+    1. 拷贝struts和jstl的依赖
+    2. 在Web.xml文件中配置ActionServlet
+    3. 提供struts-config.xml文件
+    4. 提供国际化支持，提供缺省的国际化资源文件
+    
+* Spring
+    1. 拷贝spring相关依赖包
+    2. 提供Spring的配置文件
+
+在web.xml文件中配置ContextLoaderListener,让web Server在启动的时候将BeanFactory放在ServletContext中。
+```xml
+<context-param>
+    <param-name>contextConfiguration</param-name>
+    <param-value>classpath:applicationContext-*.xml</param-value>    
+</context-param>
+
+<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+```
+
+在Action中采用WebApplicationContextUtils.getRequestWebApplicationContext()从ServletContext中取得BeanFactory.  
+
+通过BeanFactory从IoC容器中获取业务逻辑对象。
+
+> 上面的存在依赖查找，所以Action依赖Spring的API。
+>
+- --
+### Spring和Struts的依赖包配置（第二种）
+集成原理，将Struts的Action交给Spring创建。这样业务逻辑将会被注入。（避免依赖查找 ）
+* Struts
+    1. 拷贝struts和jstl的依赖
+    2. 在Web.xml文件中配置ActionServlet
+    3. 提供struts-config.xml文件
+    4. 提供国际化支持，提供缺省的国际化资源文件
+    
+* Spring
+    1. 拷贝spring相关依赖包
+    2. 提供Spring的配置文件
+
+在web.xml文件中配置ContextLoaderListener,让web Server在启动的时候将BeanFactory放在ServletContext中。
+```xml
+<context-param>
+    <param-name>contextConfiguration</param-name>
+    <param-value>classpath:applicationContext-*.xml</param-value>    
+</context-param>
+
+<listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+```
+
+struts-config.xml文件中<action>标签的type属性需要更改为Spring的代理类:org.springframework.web.DelegateActionProxy代理Action的
+作用：取得BeanFactory,然后到IoC容器中将本次请求对应的Action取出。  
+
+将Action交给Spring创建，必须创建业务逻辑对象，注入到Action。
+```xml
+<bean name="/login" class="com.example.spring.actions.LoginAction">
+    <property name="userManager" ref="userManager"/>
+</bean>
+```
+
+必须使用name属性，而且name属性值，必须和struts-config.xml中<action>标签中的属性值一致。  
+必须配置业务逻辑对象。   
+建议将Scope设置为prototype,这样struts的action将是线程安全的。
